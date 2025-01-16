@@ -220,11 +220,13 @@ VALUES
 ```
 
 ###### 6-Patient_has_Insurance Table (Bridge Table)
+```sql
 CREATE TABLE `patient_has_insurance` (
   `Insurance_policy_id` INT NOT NULL,
   `Patient_patient_id` INT NOT NULL,
   PRIMARY KEY (`Insurance_policy_id`, `Patient_patient_id`));
   ```
+
 ###### 6-Add Data to the Patient_has_Insurance Table (Bridge Table)
 ```sql
 INSERT INTO Patient_has_Insurance (Insurance_policy_id, Patient_patient_id)
@@ -358,5 +360,5 @@ VALUES
 (5, 'Ella', 'Lopez', '1991-06-17', 'Female', 'Nurse', '5678901235', 'ellalopez@email.com', 2);
 ```
 
-Database Queries
+### Database Queries
 
