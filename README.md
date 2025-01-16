@@ -135,8 +135,7 @@ CREATE TABLE Department (
     Department_id INT PRIMARY KEY,
     Name VARCHAR(50),
     Phone VARCHAR(15),
-    Location VARCHAR(100)
-);
+    Location VARCHAR(100));
 ```
 
 ###### 2-Add Data to the Department Table
@@ -161,10 +160,11 @@ CREATE TABLE Doctor (
     Phone VARCHAR(15),
     Email VARCHAR(100),
     Department_id INT,
-    FOREIGN KEY (Department_id) REFERENCES Department(Department_id)
-);```
+    FOREIGN KEY (Department_id) REFERENCES Department(Department_id));
+```
 
-3-Add Data to the Doctor Table
+###### 3-Add Data to the Doctor Table
+```sql 
 INSERT INTO Doctor (Doctor_id, First_name, Last_name, DOB, Gender, Phone, Email, Department_id)
 VALUES
 (1, 'Dr. John', 'Williams', '1975-05-15', 'Male', '1234567890', 'dr.jwilliams@email.com', 1),
@@ -172,15 +172,20 @@ VALUES
 (3, 'Dr. Robert', 'Jones', '1982-11-05', 'Male', '3456789012', 'dr.rjones@email.com', 3),
 (4, 'Dr. Sarah', 'Brown', '1990-06-15', 'Female', '4567890123', 'dr.sbrown@email.com', 1),
 (5, 'Dr. William', 'Davis', '1986-09-22', 'Male', '5678901234', 'dr.wdavis@email.com', 2);
+```
 
-4-Patient_has_Doctor Table (Bridge Table)
+###### 4-Patient_has_Doctor Table (Bridge Table)
+```sql
 CREATE TABLE Patient_has_Doctor (
     Doctor_doctor_id INT NOT NULL, 
     Patient_patient_id INT NOT NULL, 
     PRIMARY KEY (Doctor_doctor_id, Patient_patient_id),
     FOREIGN KEY (Doctor_doctor_id) REFERENCES Doctor(Doctor_id),
     FOREIGN KEY (Patient_patient_id) REFERENCES Patient(Patient_id));
-4-Add Data to the Patient_has_Doctor Table (Bridge Table)
+```
+
+###### 4-Add Data to the Patient_has_Doctor Table (Bridge Table)
+```sql
 INSERT INTO Patient_has_Doctor (Doctor_doctor_id, Patient_patient_id)
 VALUES
 (1, 1), -- Patient 1 is associated with Doctor 1
@@ -193,14 +198,16 @@ VALUES
 (5, 8), -- Patient 8 is also associated with Doctor 5
 (4, 9), -- Patient 9 is associated with Doctor 4
 (3, 10); -- Patient 10 is associated with Doctor 3
+```
 
-5-Insurance Table
+###### 5-Insurance Table
+```sql
 CREATE TABLE Insurance (
     Policy_id INT PRIMARY KEY,
     Policy_number VARCHAR(50),
     Start_date DATE,
-    End_date DATE
-);
+    End_date DATE);
+```
 5-Add Data to the Insurance Table
 INSERT INTO Insurance (Policy_id, Policy_number, Start_date, End_date)
 VALUES
