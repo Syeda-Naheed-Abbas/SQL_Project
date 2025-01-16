@@ -412,8 +412,8 @@ VALUES
 ![image](https://github.com/user-attachments/assets/95591222-a4f8-415e-818f-705edd0cb122)
 
 
-## Conclusion & Proposed Solutions:
-In conclusion, I designed a hospital database aimed at significantly improving efficiency, effectiveness, and quality of patient care. By centralizing patient information, medical records, and other critical data, the system enables hospital staff to make informed decisions about patient care, resource allocation, and budget planning. This centralized approach will streamline hospital operations, enhance data accessibility, and improve compliance with regulatory standards.
+## Proposed Solutions:
+I designed a hospital database aimed at significantly improving efficiency, effectiveness, and quality of patient care. By centralizing patient information, medical records, and other critical data, the system enables hospital staff to make informed decisions about patient care, resource allocation, and budget planning. This centralized approach will streamline hospital operations, enhance data accessibility, and improve compliance with regulatory standards.
 The database design, based on entity relationships and the ER model, ensures a structured and comprehensive approach to managing hospital data. Throughout the design process, I prioritized security, user-friendliness, scalability, and maintainability. The outcome is a reliable database foundation for managing hospital data, adaptable to future needs.
 The proposed solution is a secure, centralized database system that integrates all hospital operations, addressing inefficiencies and enhancing overall data management. It ensures authorized access to sensitive information, supports complex data relationships, and maintains data consistency through normalization. Additionally, the system offers efficient querying and reporting capabilities, facilitating effective decision-making. This solution delivers a robust, scalable, and secure framework for data management, with potential for future enhancements such as advanced reporting and analytics to meet evolving needs.
 
