@@ -86,7 +86,7 @@ The Staff Entity enables the management of employee records, including adding, u
 The Medical Record Entity allows for the creation, update, deletion, and retrieval of medical records using a unique Record_ID. It enables viewing of patient details such as diagnosis, treatment plans, allergies, and family history, while supporting links to related entities like patients, billing, medical procedures, and lab tests. Secure access is ensured, allowing only authorized users to manage the records.
 
 ### ER Diagram: 
-https://github.com/Syeda-Naheed-Abbas/SQL_Hospital_Project/blob/main/Hospital_ERD.pdf
+![image](https://github.com/user-attachments/assets/9e3d8c07-196d-44d9-9085-15e42282967d)
 
 ### Normalization:
 #### 1NF Modification 
