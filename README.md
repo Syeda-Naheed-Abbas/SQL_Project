@@ -1,8 +1,11 @@
-# Project: Hospital_Database
+# Hospital_Database
 
 ## Project Overview
 The goal of this project is to design a centralized, efficient, and scalable hospital database system. This database will manage critical hospital data, including patient records, billing, insurance, medical procedures, staff, departments, and more. By addressing current inefficiencies, the system aims to improve patient care, streamline operations, and ensure compliance with regulatory standards.
 
+### Tools
+- MySQL WorkBench
+-  
 ### Project Description
 #### Problem Statement: Current Challenges:
 •	Reliance on paper-based medical records results in inefficiencies, errors, and delays.
