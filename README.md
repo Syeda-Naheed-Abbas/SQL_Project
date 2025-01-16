@@ -87,7 +87,6 @@ The Medical Record Entity allows for the creation, update, deletion, and retriev
 
 ### ER Diagram: 
 ![image](https://github.com/user-attachments/assets/9e3d8c07-196d-44d9-9085-15e42282967d)
-
 ### Normalization:
 #### 1NF Modification 
 To achieve First Normal Form (1NF), I ensure that each table must have a primary key, all columns must contain atomic values, and the values in each column must be of the same type. Upon reviewing the database schema, all tables already satisfy these requirements. The Patient Table, Doctor Table, Department Table, Insurance Table, Medical_Record Table, Billing Table, Emergency Table, Medical_Procedure Table, and Staff Table all contain atomic values with no repeating groups and have primary keys in place. Additionally, the bridge tables, Patient_has_Doctor Table and Patient_has_Insurance Table, also meet 1NF standards as they contain atomic values and are appropriately structured. Therefore, no modifications are necessary, as the database is already compliant with 1NF.
@@ -363,4 +362,51 @@ VALUES
 ### Database Queries
 #### Question 1: Find all patients treated by 'Dr. John Williams'.
 ![image](https://github.com/user-attachments/assets/79a39e21-23a3-4b4d-b4bf-cfb563456b4b)
+
+#### Question 2: List all doctors in the 'Cardiology' department.
+![image](https://github.com/user-attachments/assets/3a6bba70-d29b-4b9d-93ab-1ad68dfad33e)
+
+#### Question 3: Count the number of patients assigned to each doctor.
+![image](https://github.com/user-attachments/assets/2aff3c06-5f1c-46e1-9dd3-94949d7e1d1f)
+
+#### Question 4: Find the total billing amount for each patient.
+![image](https://github.com/user-attachments/assets/b6d6f0d1-64e1-4595-874c-93487c403c24)
+
+#### Question 5: Retrieve all procedures performed in 2023.
+![image](https://github.com/user-attachments/assets/e3ab6342-49b5-492d-94fa-5eaeb98e7e76)
+
+#### Question 6: List the names of patients with an insurance policy ending in 2023.
+![image](https://github.com/user-attachments/assets/f42851c0-1cbf-4e18-849b-df8cdd6c41ca)
+
+#### Question 7: Display the name of the department and the number of doctors in each department.
+![image](https://github.com/user-attachments/assets/c907c0b5-345d-44b2-9790-7b08010e4304)
+
+#### Question 8: Find the doctors who have treated more than one patient.
+![image](https://github.com/user-attachments/assets/b8bd41df-3b70-4d98-88d2-087189fa1545)
+
+#### Question 9: Retrieve all emergencies of type 'Accident'.
+![image](https://github.com/user-attachments/assets/89a51d58-86f4-4d5d-90c0-f39f669ecf42)
+
+#### Question 10: List all patients who have undergone a procedure and their corresponding doctors. 
+![image](https://github.com/user-attachments/assets/096b7e7f-e969-4b74-b424-98cfd4edc711)
+
+#### Question 11: List all doctors and the count of patients they are associated with.
+![image](https://github.com/user-attachments/assets/e63c5a26-eac5-4b44-8133-7aaee857f2b4)
+
+#### Question 12: List all patients and their associated insured policies (if multiple).
+![image](https://github.com/user-attachments/assets/95591222-a4f8-415e-818f-705edd0cb122)
+
+### Conclusion & Proposed Solutions:
+In conclusion, I designed a hospital database aimed at significantly improving efficiency, effectiveness, and quality of patient care. By centralizing patient information, medical records, and other critical data, the system enables hospital staff to make informed decisions about patient care, resource allocation, and budget planning. This centralized approach will streamline hospital operations, enhance data accessibility, and improve compliance with regulatory standards.
+The database design, based on entity relationships and the ER model, ensures a structured and comprehensive approach to managing hospital data. Throughout the design process, I prioritized security, user-friendliness, scalability, and maintainability. The outcome is a reliable database foundation for managing hospital data, adaptable to future needs.
+The proposed solution is a secure, centralized database system that integrates all hospital operations, addressing inefficiencies and enhancing overall data management. It ensures authorized access to sensitive information, supports complex data relationships, and maintains data consistency through normalization. Additionally, the system offers efficient querying and reporting capabilities, facilitating effective decision-making. This solution delivers a robust, scalable, and secure framework for data management, with potential for future enhancements such as advanced reporting and analytics to meet evolving needs.
+
+
+
+
+
+
+
+
+
 
