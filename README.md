@@ -98,4 +98,4 @@ To achieve Second Normal Form (2NF), I ensure that all tables must first satisfy
 #### 3NF Modification 
 To achieve Third Normal Form (3NF), the database must first satisfy 2NF, and there should be no transitive dependencies, meaning non-prime attributes must depend solely on the primary key. Upon evaluation, the Patient Table, Doctor Table, Department Table, Patient_has_Doctor Table, Insurance Table, Patient_has_Insurance Table, Medical_Record Table, Billing Table, Emergency Table, and Medical_Procedure Table already satisfy 3NF, as there are no transitive dependencies. However, the Staff Table requires modification to eliminate potential transitive dependencies, such as the dependency involving the Job_title attribute. To address this, a new Job table should be created to store job-related details, with columns for Job_id, Job_title, Salary, and Other_details. The Staff Table can then be updated to include a Job_id column, and the Job_title column can be removed. After these modifications, all tables, including the updated Staff Table, satisfy 3NF.
 
-
+### Create Database and Data Insert Script
