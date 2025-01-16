@@ -85,3 +85,17 @@ The Staff Entity enables the management of employee records, including adding, u
 #### 9-Medical Record Entity:
 The Medical Record Entity allows for the creation, update, deletion, and retrieval of medical records using a unique Record_ID. It enables viewing of patient details such as diagnosis, treatment plans, allergies, and family history, while supporting links to related entities like patients, billing, medical procedures, and lab tests. Secure access is ensured, allowing only authorized users to manage the records.
 
+### ER Diagram: 
+https://github.com/Syeda-Naheed-Abbas/SQL_Hospital_Project/blob/main/Hospital_ERD.pdf
+
+### Normalization:
+#### 1NF Modification 
+To achieve First Normal Form (1NF), I ensure that each table must have a primary key, all columns must contain atomic values, and the values in each column must be of the same type. Upon reviewing the database schema, all tables already satisfy these requirements. The Patient Table, Doctor Table, Department Table, Insurance Table, Medical_Record Table, Billing Table, Emergency Table, Medical_Procedure Table, and Staff Table all contain atomic values with no repeating groups and have primary keys in place. Additionally, the bridge tables, Patient_has_Doctor Table and Patient_has_Insurance Table, also meet 1NF standards as they contain atomic values and are appropriately structured. Therefore, no modifications are necessary, as the database is already compliant with 1NF.
+
+#### 2NF Modification
+To achieve Second Normal Form (2NF), I ensure that all tables must first satisfy 1NF, and all non-key attributes must depend on the entire primary key, ensuring no partial dependencies. Upon reviewing the database schema, all tables already meet these requirements. The Patient Table, Doctor Table, Department Table, Insurance Table, Medical_Record Table, Billing Table, Emergency Table, Medical_Procedure Table, and Staff Table satisfy 2NF as their non-key attributes fully depend on their respective primary keys. Additionally, the bridge tables, Patient_has_Doctor Table and Patient_has_Insurance Table, also comply with 2NF, as they have no partial dependencies. Consequently, no modifications are required, as the database is already in compliance with 2NF.
+
+#### 3NF Modification 
+To achieve Third Normal Form (3NF), the database must first satisfy 2NF, and there should be no transitive dependencies, meaning non-prime attributes must depend solely on the primary key. Upon evaluation, the Patient Table, Doctor Table, Department Table, Patient_has_Doctor Table, Insurance Table, Patient_has_Insurance Table, Medical_Record Table, Billing Table, Emergency Table, and Medical_Procedure Table already satisfy 3NF, as there are no transitive dependencies. However, the Staff Table requires modification to eliminate potential transitive dependencies, such as the dependency involving the Job_title attribute. To address this, a new Job table should be created to store job-related details, with columns for Job_id, Job_title, Salary, and Other_details. The Staff Table can then be updated to include a Job_id column, and the Job_title column can be removed. After these modifications, all tables, including the updated Staff Table, satisfy 3NF.
+
+
