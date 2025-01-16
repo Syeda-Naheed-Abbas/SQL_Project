@@ -208,7 +208,8 @@ CREATE TABLE Insurance (
     Start_date DATE,
     End_date DATE);
 ```
-5-Add Data to the Insurance Table
+###### 5-Add Data to the Insurance Table
+```sql
 INSERT INTO Insurance (Policy_id, Policy_number, Start_date, End_date)
 VALUES
 (1, 'POL12345', '2022-01-01', '2023-12-31'),
@@ -216,13 +217,16 @@ VALUES
 (3, 'POL12347', '2023-01-01', '2024-12-31'),
 (4, 'POL12348', '2023-04-01', '2024-03-31'),
 (5, 'POL12349', '2023-08-01', '2024-07-31');
+```
 
-6-Patient_has_Insurance Table (Bridge Table)
+###### 6-Patient_has_Insurance Table (Bridge Table)
 CREATE TABLE `patient_has_insurance` (
   `Insurance_policy_id` INT NOT NULL,
   `Patient_patient_id` INT NOT NULL,
   PRIMARY KEY (`Insurance_policy_id`, `Patient_patient_id`));
-6-Add Data to the Patient_has_Insurance Table (Bridge Table)
+  ```
+###### 6-Add Data to the Patient_has_Insurance Table (Bridge Table)
+```sql
 INSERT INTO Patient_has_Insurance (Insurance_policy_id, Patient_patient_id)
 VALUES
 (1, 1), -- John Doe has policy POL12345
@@ -232,16 +236,20 @@ VALUES
 (5, 5), -- Michael Johnson has policy POL12349
 (3, 6), -- Emily Wilson also has policy POL12347
 (2, 7); -- William Lee also has policy POL12346
+```
 
-7-Medical_Record Table
+###### 7-Medical_Record Table
+```sql
 CREATE TABLE Medical_Record (
     Record_id INT PRIMARY KEY,
     Patient_id INT,
     Doctor_id INT,
     FOREIGN KEY (Patient_id) REFERENCES Patient(Patient_id),
-    FOREIGN KEY (Doctor_id) REFERENCES Doctor(Doctor_id)
-);
-7-Add Data to the Medical_Record Table
+    FOREIGN KEY (Doctor_id) REFERENCES Doctor(Doctor_id));
+```
+
+###### 7-Add Data to the Medical_Record Table
+```sql
 INSERT INTO Medical_Record (Record_id, Patient_id, Doctor_id)
 VALUES
 (1, 1, 2),
@@ -254,16 +262,20 @@ VALUES
 (8, 8, 4),
 (9, 9, 1),
 (10, 10, 5);
+```
 
-8-Billing Table
+###### 8-Billing Table
+```sql
 CREATE TABLE Billing (
     Bill_id INT PRIMARY KEY,
     Record_id INT,
     Amount DECIMAL(10, 2),
     Date DATE,
-    FOREIGN KEY (Record_id) REFERENCES Medical_Record(Record_id)
-);
-8-Add Data to the Billing Table
+    FOREIGN KEY (Record_id) REFERENCES Medical_Record(Record_id));
+```
+
+###### 8-Add Data to the Billing Table
+```sql
 INSERT INTO Billing (Bill_id, Record_id, Amount, Date)
 VALUES
 (1, 1, 500, '2023-01-15'),
@@ -276,15 +288,19 @@ VALUES
 (8, 8, 550, '2023-12-02'),
 (9, 9, 600, '2024-01-01'),
 (10, 10, 500, '2024-01-05');
+```
 
-9-Emergency Table
+###### 9-Emergency Table
+```sql
 CREATE TABLE Emergency (
     Emergency_id INT PRIMARY KEY,
     Type VARCHAR(50),
     Date DATE,
-    Notes TEXT
-);
-9-Add Data to the Emergency Table
+    Notes TEXT);
+```
+
+###### 9-Add Data to the Emergency Table
+```sql
 INSERT INTO Emergency (Emergency_id, Type, Date, Notes)
 VALUES
 (1, 'Accident', '2023-03-15', 'Fracture of the leg'),
@@ -292,17 +308,21 @@ VALUES
 (3, 'Stroke', '2023-05-25', 'Patient showing symptoms of stroke'),
 (4, 'Accident', '2023-06-30', 'Car accident with head injuries'),
 (5, 'Heart Attack', '2023-07-01', 'Severe chest pain and dizziness');
+```
 
-10-Medical_Procedure Table
+###### 10-Medical_Procedure Table
+```sql
 CREATE TABLE Medical_Procedure (
     Procedure_id INT PRIMARY KEY,
     Record_id INT,
     Type VARCHAR(50),
     Date DATE,
     Notes TEXT,
-    FOREIGN KEY (Record_id) REFERENCES Medical_Record(Record_id)
-);
-10-Add Data to the Medical_Procedure Table
+    FOREIGN KEY (Record_id) REFERENCES Medical_Record(Record_id));
+```
+
+###### 10-Add Data to the Medical_Procedure Table
+```sql
 INSERT INTO Medical_Procedure (Procedure_id, Record_id, Type, Date, Notes)
 VALUES
 (1, 1, 'X-ray', '2023-01-16', 'X-ray of fractured leg'),
@@ -310,8 +330,10 @@ VALUES
 (3, 3, 'CT Scan', '2023-07-02', 'CT scan to check brain activity'),
 (4, 4, 'Surgery', '2023-08-26', 'Surgery for fractured bone'),
 (5, 5, 'Angioplasty', '2023-09-12', 'Angioplasty for heart attack');
+````
 
-11-Staff Table
+###### 11-Staff Table
+```sql
 CREATE TABLE Staff (
     Staff_id INT PRIMARY KEY,
     First_name VARCHAR(50),
@@ -322,9 +344,11 @@ CREATE TABLE Staff (
     Phone VARCHAR(15),
     Email VARCHAR(100),
     Department_id INT,
-    FOREIGN KEY (Department_id) REFERENCES Department(Department_id)
-);
-11-Add Data to the Staff Table
+    FOREIGN KEY (Department_id) REFERENCES Department(Department_id));
+```
+
+###### 11-Add Data to the Staff Table
+```sql
 INSERT INTO Staff (Staff_id, First_name, Last_name, DOB, Gender, Job_title, Phone, Email, Department_id)
 VALUES
 (1, 'Alice', 'Green', '1984-11-10', 'Female', 'Nurse', '1234567891', 'alicegreen@email.com', 1),
@@ -332,7 +356,7 @@ VALUES
 (3, 'Catherine', 'Evans', '1980-07-22', 'Female', 'Nurse', '3456789013', 'catherineevans@email.com', 1),
 (4, 'David', 'King', '1992-12-04', 'Male', 'Technician', '4567890124', 'davidking@email.com', 3),
 (5, 'Ella', 'Lopez', '1991-06-17', 'Female', 'Nurse', '5678901235', 'ellalopez@email.com', 2);
-
+```
 
 Database Queries
 
