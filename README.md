@@ -113,7 +113,8 @@ CREATE TABLE Patient (
     Email VARCHAR(100));
 ```
 
-1-Add Data to the Patient Table
+###### 1-Add Data to the Patient Table
+```sql
 INSERT INTO Patient (Patient_id, First_name, Last_name, DOB, Gender, Address, Phone, Email)
 VALUES
 (1, 'John', 'Doe', '1985-02-15', 'Male', '123 Elm St', '1234567890', 'johndoe@email.com'),
@@ -126,6 +127,7 @@ VALUES
 (8, 'Olivia', 'Martinez', '1990-09-22', 'Female', '213 Birch St', '8901234567', 'oliviamartinez@email.com'),
 (9, 'Sophia', 'García', '1996-01-14', 'Female', '321 Pine St', '9012345678', 'sophiagarcia@email.com'),
 (10, 'Benjamin', 'Miller', '1981-03-09', 'Male', '432 Oak St', '0123456789', 'benjaminmiller@email.com');
+```
 
 2-Department Table
 CREATE TABLE Department (
