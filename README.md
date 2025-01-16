@@ -1,6 +1,6 @@
 # Project: Hospital_Database
 
-## Executive Summary
+## Project Overview
 The goal of this project is to design a centralized, efficient, and scalable hospital database system. This database will manage critical hospital data, including patient records, billing, insurance, medical procedures, staff, departments, and more. By addressing current inefficiencies, the system aims to improve patient care, streamline operations, and ensure compliance with regulatory standards.
 
 ### Project Description
