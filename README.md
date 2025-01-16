@@ -99,3 +99,224 @@ To achieve Second Normal Form (2NF), I ensure that all tables must first satisfy
 To achieve Third Normal Form (3NF), the database must first satisfy 2NF, and there should be no transitive dependencies, meaning non-prime attributes must depend solely on the primary key. Upon evaluation, the Patient Table, Doctor Table, Department Table, Patient_has_Doctor Table, Insurance Table, Patient_has_Insurance Table, Medical_Record Table, Billing Table, Emergency Table, and Medical_Procedure Table already satisfy 3NF, as there are no transitive dependencies. However, the Staff Table requires modification to eliminate potential transitive dependencies, such as the dependency involving the Job_title attribute. To address this, a new Job table should be created to store job-related details, with columns for Job_id, Job_title, Salary, and Other_details. The Staff Table can then be updated to include a Job_id column, and the Job_title column can be removed. After these modifications, all tables, including the updated Staff Table, satisfy 3NF.
 
 ### Create Database and Data Insert Script
+
+##### 1-Patient Table
+--- sql
+CREATE TABLE Patient (
+    Patient_id INT PRIMARY KEY,
+    First_name VARCHAR(50),
+    Last_name VARCHAR(50),
+    DOB DATE,
+    Gender VARCHAR(10),
+    Address VARCHAR(100),
+    Phone VARCHAR(15),
+    Email VARCHAR(100)
+);
+--- 
+1-Add Data to the Patient Table
+INSERT INTO Patient (Patient_id, First_name, Last_name, DOB, Gender, Address, Phone, Email)
+VALUES
+(1, 'John', 'Doe', '1985-02-15', 'Male', '123 Elm St', '1234567890', 'johndoe@email.com'),
+(2, 'Jane', 'Smith', '1992-07-30', 'Female', '456 Oak St', '2345678901', 'janesmith@email.com'),
+(3, 'James', 'Brown', '1978-11-02', 'Male', '789 Pine St', '3456789012', 'jamesbrown@email.com'),
+(4, 'Mary', 'Davis', '2000-04-10', 'Female', '123 Maple St', '4567890123', 'marydavis@email.com'),
+(5, 'Michael', 'Johnson', '1983-08-19', 'Male', '321 Birch St', '5678901234', 'michaeljohnson@email.com'),
+(6, 'Emily', 'Wilson', '1995-12-25', 'Female', '654 Cedar St', '6789012345', 'emilywilson@email.com'),
+(7, 'William', 'Lee', '1989-06-17', 'Male', '987 Elm St', '7890123456', 'williamlee@email.com'),
+(8, 'Olivia', 'Martinez', '1990-09-22', 'Female', '213 Birch St', '8901234567', 'oliviamartinez@email.com'),
+(9, 'Sophia', 'García', '1996-01-14', 'Female', '321 Pine St', '9012345678', 'sophiagarcia@email.com'),
+(10, 'Benjamin', 'Miller', '1981-03-09', 'Male', '432 Oak St', '0123456789', 'benjaminmiller@email.com');
+
+2-Department Table
+CREATE TABLE Department (
+    Department_id INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Phone VARCHAR(15),
+    Location VARCHAR(100)
+);
+2-Add Data to the Department Table
+INSERT INTO Department (Department_id, Name, Phone, Location)
+VALUES
+(1, 'Cardiology', '1234567890', 'Building A'),
+(2, 'Orthopedics', '2345678901', 'Building B'),
+(3, 'Neurology', '3456789012', 'Building C'),
+(4, 'Emergency', '4567890123', 'Building D'),
+(5, 'Surgery', '5678901234', 'Building E');
+
+3-Doctor Table
+CREATE TABLE Doctor (
+    Doctor_id INT PRIMARY KEY,
+    First_name VARCHAR(50),
+    Last_name VARCHAR(50),
+    DOB DATE,
+    Gender VARCHAR(10),
+    Phone VARCHAR(15),
+    Email VARCHAR(100),
+    Department_id INT,
+    FOREIGN KEY (Department_id) REFERENCES Department(Department_id)
+);
+3-Add Data to the Doctor Table
+INSERT INTO Doctor (Doctor_id, First_name, Last_name, DOB, Gender, Phone, Email, Department_id)
+VALUES
+(1, 'Dr. John', 'Williams', '1975-05-15', 'Male', '1234567890', 'dr.jwilliams@email.com', 1),
+(2, 'Dr. Emily', 'Taylor', '1980-03-20', 'Female', '2345678901', 'dr.etaylor@email.com', 2),
+(3, 'Dr. Robert', 'Jones', '1982-11-05', 'Male', '3456789012', 'dr.rjones@email.com', 3),
+(4, 'Dr. Sarah', 'Brown', '1990-06-15', 'Female', '4567890123', 'dr.sbrown@email.com', 1),
+(5, 'Dr. William', 'Davis', '1986-09-22', 'Male', '5678901234', 'dr.wdavis@email.com', 2);
+
+4-Patient_has_Doctor Table (Bridge Table)
+CREATE TABLE Patient_has_Doctor (
+    Doctor_doctor_id INT NOT NULL, 
+    Patient_patient_id INT NOT NULL, 
+    PRIMARY KEY (Doctor_doctor_id, Patient_patient_id),
+    FOREIGN KEY (Doctor_doctor_id) REFERENCES Doctor(Doctor_id),
+    FOREIGN KEY (Patient_patient_id) REFERENCES Patient(Patient_id));
+4-Add Data to the Patient_has_Doctor Table (Bridge Table)
+INSERT INTO Patient_has_Doctor (Doctor_doctor_id, Patient_patient_id)
+VALUES
+(1, 1), -- Patient 1 is associated with Doctor 1
+(1, 2), -- Patient 2 is also associated with Doctor 1
+(2, 3), -- Patient 3 is associated with Doctor 2
+(2, 4), -- Patient 4 is associated with Doctor 2
+(3, 5), -- Patient 5 is associated with Doctor 3
+(4, 6), -- Patient 6 is associated with Doctor 4
+(5, 7), -- Patient 7 is associated with Doctor 5
+(5, 8), -- Patient 8 is also associated with Doctor 5
+(4, 9), -- Patient 9 is associated with Doctor 4
+(3, 10); -- Patient 10 is associated with Doctor 3
+
+5-Insurance Table
+CREATE TABLE Insurance (
+    Policy_id INT PRIMARY KEY,
+    Policy_number VARCHAR(50),
+    Start_date DATE,
+    End_date DATE
+);
+5-Add Data to the Insurance Table
+INSERT INTO Insurance (Policy_id, Policy_number, Start_date, End_date)
+VALUES
+(1, 'POL12345', '2022-01-01', '2023-12-31'),
+(2, 'POL12346', '2022-06-15', '2023-06-14'),
+(3, 'POL12347', '2023-01-01', '2024-12-31'),
+(4, 'POL12348', '2023-04-01', '2024-03-31'),
+(5, 'POL12349', '2023-08-01', '2024-07-31');
+
+6-Patient_has_Insurance Table (Bridge Table)
+CREATE TABLE `patient_has_insurance` (
+  `Insurance_policy_id` INT NOT NULL,
+  `Patient_patient_id` INT NOT NULL,
+  PRIMARY KEY (`Insurance_policy_id`, `Patient_patient_id`));
+6-Add Data to the Patient_has_Insurance Table (Bridge Table)
+INSERT INTO Patient_has_Insurance (Insurance_policy_id, Patient_patient_id)
+VALUES
+(1, 1), -- John Doe has policy POL12345
+(2, 2), -- Jane Smith has policy POL12346
+(3, 3), -- James Brown has policy POL12347
+(4, 4), -- Mary Davis has policy POL12348
+(5, 5), -- Michael Johnson has policy POL12349
+(3, 6), -- Emily Wilson also has policy POL12347
+(2, 7); -- William Lee also has policy POL12346
+
+7-Medical_Record Table
+CREATE TABLE Medical_Record (
+    Record_id INT PRIMARY KEY,
+    Patient_id INT,
+    Doctor_id INT,
+    FOREIGN KEY (Patient_id) REFERENCES Patient(Patient_id),
+    FOREIGN KEY (Doctor_id) REFERENCES Doctor(Doctor_id)
+);
+7-Add Data to the Medical_Record Table
+INSERT INTO Medical_Record (Record_id, Patient_id, Doctor_id)
+VALUES
+(1, 1, 2),
+(2, 2, 3),
+(3, 3, 4),
+(4, 4, 5),
+(5, 5, 1),
+(6, 6, 2),
+(7, 7, 3),
+(8, 8, 4),
+(9, 9, 1),
+(10, 10, 5);
+
+8-Billing Table
+CREATE TABLE Billing (
+    Bill_id INT PRIMARY KEY,
+    Record_id INT,
+    Amount DECIMAL(10, 2),
+    Date DATE,
+    FOREIGN KEY (Record_id) REFERENCES Medical_Record(Record_id)
+);
+8-Add Data to the Billing Table
+INSERT INTO Billing (Bill_id, Record_id, Amount, Date)
+VALUES
+(1, 1, 500, '2023-01-15'),
+(2, 2, 300, '2023-06-20'),
+(3, 3, 450, '2023-07-30'),
+(4, 4, 650, '2023-08-25'),
+(5, 5, 550, '2023-09-10'),
+(6, 6, 700, '2023-10-05'),
+(7, 7, 400, '2023-11-12'),
+(8, 8, 550, '2023-12-02'),
+(9, 9, 600, '2024-01-01'),
+(10, 10, 500, '2024-01-05');
+
+9-Emergency Table
+CREATE TABLE Emergency (
+    Emergency_id INT PRIMARY KEY,
+    Type VARCHAR(50),
+    Date DATE,
+    Notes TEXT
+);
+9-Add Data to the Emergency Table
+INSERT INTO Emergency (Emergency_id, Type, Date, Notes)
+VALUES
+(1, 'Accident', '2023-03-15', 'Fracture of the leg'),
+(2, 'Heart Attack', '2023-04-10', 'Chest pain and shortness of breath'),
+(3, 'Stroke', '2023-05-25', 'Patient showing symptoms of stroke'),
+(4, 'Accident', '2023-06-30', 'Car accident with head injuries'),
+(5, 'Heart Attack', '2023-07-01', 'Severe chest pain and dizziness');
+
+10-Medical_Procedure Table
+CREATE TABLE Medical_Procedure (
+    Procedure_id INT PRIMARY KEY,
+    Record_id INT,
+    Type VARCHAR(50),
+    Date DATE,
+    Notes TEXT,
+    FOREIGN KEY (Record_id) REFERENCES Medical_Record(Record_id)
+);
+10-Add Data to the Medical_Procedure Table
+INSERT INTO Medical_Procedure (Procedure_id, Record_id, Type, Date, Notes)
+VALUES
+(1, 1, 'X-ray', '2023-01-16', 'X-ray of fractured leg'),
+(2, 2, 'ECG', '2023-06-21', 'ECG for heart attack'),
+(3, 3, 'CT Scan', '2023-07-02', 'CT scan to check brain activity'),
+(4, 4, 'Surgery', '2023-08-26', 'Surgery for fractured bone'),
+(5, 5, 'Angioplasty', '2023-09-12', 'Angioplasty for heart attack');
+
+11-Staff Table
+CREATE TABLE Staff (
+    Staff_id INT PRIMARY KEY,
+    First_name VARCHAR(50),
+    Last_name VARCHAR(50),
+    DOB DATE,
+    Gender VARCHAR(10),
+    Job_title VARCHAR(50),
+    Phone VARCHAR(15),
+    Email VARCHAR(100),
+    Department_id INT,
+    FOREIGN KEY (Department_id) REFERENCES Department(Department_id)
+);
+11-Add Data to the Staff Table
+INSERT INTO Staff (Staff_id, First_name, Last_name, DOB, Gender, Job_title, Phone, Email, Department_id)
+VALUES
+(1, 'Alice', 'Green', '1984-11-10', 'Female', 'Nurse', '1234567891', 'alicegreen@email.com', 1),
+(2, 'Bob', 'Harris', '1978-03-03', 'Male', 'Technician', '2345678902', 'bobharris@email.com', 2),
+(3, 'Catherine', 'Evans', '1980-07-22', 'Female', 'Nurse', '3456789013', 'catherineevans@email.com', 1),
+(4, 'David', 'King', '1992-12-04', 'Male', 'Technician', '4567890124', 'davidking@email.com', 3),
+(5, 'Ella', 'Lopez', '1991-06-17', 'Female', 'Nurse', '5678901235', 'ellalopez@email.com', 2);
+
+
+Database Queries
+
