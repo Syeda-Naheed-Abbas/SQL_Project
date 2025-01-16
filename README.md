@@ -361,4 +361,4 @@ VALUES
 ```
 
 ### Database Queries
-
+#### Question 1: Find all patients treated by 'Dr. John Williams'.
