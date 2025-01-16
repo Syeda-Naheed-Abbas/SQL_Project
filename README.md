@@ -56,3 +56,32 @@ The Staff entity includes attributes like Staff_ID (PK), Name, Role, Department_
 6.	Medical_Procedure ↔ Emergency: Many-to-One
 7.	Department ↔ Doctor: One-to-Many
 8.	Department ↔ Staff: One-to-Many
+
+### Functional Requirements:
+#### 1-Patient Entity:
+The Patient Entity supports the creation, deletion, and modification of patient records with unique Patient_IDs, along with search and retrieval by attributes such as Patient_ID, Name, DOB, and Gender. It ensures secure access, allowing only authorized users to modify data, and links patients to doctors and insurance policies via the Patient_has_Doctor and Patient_has_Insurance bridge tables, enabling efficient data management.
+
+#### 2-Doctor Entity:
+The Doctor Entity facilitates the creation, deletion, and modification of doctor records, uniquely identified by a Doctor_ID, with search and retrieval options based on Doctor_ID, Name, and Specialty. It ensures secure management of doctor records by authorized users and establishes relationships linking doctors to their departments and patients for streamlined data organization.
+
+#### 3-Insurance Entity:
+The Insurance Entity enables the creation, deletion, and modification of insurance policies, uniquely identified by an Insurance_ID, with search and retrieval options based on Insurance_ID, Provider_Name, and Plan_Type. It ensures secure management of policy records by authorized users and links insurance policies to patients through the Patient_has_Insurance bridge table for effective data organization.
+
+#### 4-Billing Entity:
+The Billing Entity facilitates the creation, deletion, and modification of billing records, uniquely identified by a Billing_ID, with retrieval options based on Billing_ID, Medical_Record_ID, Amount, and Date_Issued. It ensures secure management by authorized users and maintains accurate linkage between billing records and the corresponding medical records.
+
+#### 5-Emergency Entity:
+The Emergency Entity allows the creation, deletion, and modification of emergency records, uniquely identified by an Emergency_ID, with retrieval options based on Emergency_ID, Type, and Location. It ensures secure management by authorized users and links emergencies to relevant medical procedures through the Medical_Procedure table.
+
+#### 6-Medical Procedures Entity:
+The Medical Procedures Entity supports the creation, deletion, and modification of procedure records, each identified by a unique Procedure_ID. It enables retrieval based on Procedure_ID, Medical_Record_ID, Procedure_Name, and Doctor_ID, while ensuring secure management by authorized users. The entity also links medical procedures to associated doctors, medical records, and emergencies.
+
+#### 7-Department Entity:
+The Department Entity enables the management of department information, including the ability to add, update, and delete records, as well as link doctors and staff. It tracks department-specific details such as the number of employees, budget, and offered services, with these attributes implemented in the database where necessary. Secure access is provided for department management.
+
+#### 8-Staff Entity:
+The Staff Entity enables the management of employee records, including adding, updating, and deleting staff information with a unique Staff_ID. It supports the retrieval of staff details such as hire/termination dates, job title, salary, and contact information, while ensuring secure access to staff management functionalities.
+
+#### 9-Medical Record Entity:
+The Medical Record Entity allows for the creation, update, deletion, and retrieval of medical records using a unique Record_ID. It enables viewing of patient details such as diagnosis, treatment plans, allergies, and family history, while supporting links to related entities like patients, billing, medical procedures, and lab tests. Secure access is ensured, allowing only authorized users to manage the records.
+
