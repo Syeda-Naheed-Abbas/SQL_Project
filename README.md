@@ -5,19 +5,19 @@ The goal of this project is to design a centralized, efficient, and scalable hos
 
 ### Tools
 - MySQL WorkBench
--  
+  
 ### Project Description
 #### Problem Statement: Current Challenges:
 •	Reliance on paper-based medical records results in inefficiencies, errors, and delays.
 •	Data is scattered across multiple systems, making it challenging to access and manage.
 •	Lack of centralization leads to difficulty in resource allocation and regulatory compliance.
 
-Database Design
+#### Database Design
 Entities, Attributes, and Relationships 
-1-Patient: 
+#### 1-Patient: 
 The Patient entity has attributes such as Patient_ID (PK), Name, DOB, Address, Phone, Gender, and Medical_History. It has a many-to-many relationship with the Insurance entity through the Patient_has_Insurance bridge table, a many-to-many relationship with the Doctor entity through the Patient_has_Doctor bridge table, and a one-to-many relationship with the Medical_Record entity.
 
-2-Doctor:
+#### 2-Doctor:
 The Doctor entity includes attributes like Doctor_ID (PK), Name, Specialty, Department_ID (FK), Phone, and Email. It shares a many-to-many relationship with the Patient entity via the Patient_has_Doctor table and a many-to-one relationship with the Department entity.
 
 3-Patient_has_Doctor:
