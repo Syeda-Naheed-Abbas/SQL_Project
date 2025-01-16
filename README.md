@@ -100,7 +100,7 @@ To achieve Third Normal Form (3NF), the database must first satisfy 2NF, and the
 
 ### Create Database and Data Insert Script
 
-###### 1-Patient Table
+###### 1-Patient 
 ```sql
 CREATE TABLE Patient (
     Patient_id INT PRIMARY KEY,
@@ -113,7 +113,7 @@ CREATE TABLE Patient (
     Email VARCHAR(100));
 ```
 
-###### 1-Add Data to the Patient Table
+###### 1-Add Data to the Patient
 ```sql
 INSERT INTO Patient (Patient_id, First_name, Last_name, DOB, Gender, Address, Phone, Email)
 VALUES
@@ -129,7 +129,8 @@ VALUES
 (10, 'Benjamin', 'Miller', '1981-03-09', 'Male', '432 Oak St', '0123456789', 'benjaminmiller@email.com');
 ```
 
-2-Department Table
+###### 2-Department Table
+```sql
 CREATE TABLE Department (
     Department_id INT PRIMARY KEY,
     Name VARCHAR(50),
@@ -144,6 +145,7 @@ VALUES
 (3, 'Neurology', '3456789012', 'Building C'),
 (4, 'Emergency', '4567890123', 'Building D'),
 (5, 'Surgery', '5678901234', 'Building E');
+```
 
 3-Doctor Table
 CREATE TABLE Doctor (
