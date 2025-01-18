@@ -1,4 +1,4 @@
-# Hospital_Database          ![image](https://github.com/user-attachments/assets/2e6cc9d0-fb3b-4670-9ea7-027789d05270)
+# **Hospital_Database**          ![image](https://github.com/user-attachments/assets/2e6cc9d0-fb3b-4670-9ea7-027789d05270)
 
 
 ## Project Overview
